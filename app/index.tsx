@@ -5,19 +5,10 @@ import logo from "../assets/images/baegopa-logo.png";
 
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-around bg-green-950">
+    <View className="flex-1 items-center justify-around bg-primary">
       <Image className="w-[250px] h-[250px]" source={logo} />
       <Button title="masuk" />
       <StatusBar style="auto" />
     </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
