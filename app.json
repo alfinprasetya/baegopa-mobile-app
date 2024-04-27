@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Baegopa-fix",
-    "slug": "Baegopa-fix",
+    "name": "Baegopa",
+    "slug": "baegopa",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "baegopa",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
