@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,jsx,ts,tsx}",
-    "./<custom directory>/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -21,6 +18,14 @@ module.exports = {
         accent: {
           DEFAULT: "#FACB05",
         },
+      },
+      fontFamily: {
+        RoboRegular: ["Roboto-Regular", "sans-serif"],
+        RoboThin: ["Roboto-Thin", "sans-serif"],
+        RoboLight: ["Roboto-Light", "sans-serif"],
+        RoboMedium: ["Roboto-Medium", "sans-serif"],
+        RoboBold: ["Roboto-Bold", "sans-serif"],
+        RoboBlack: ["Roboto-Black", "sans-serif"],
       },
     },
   },
