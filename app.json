@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#027C49"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -20,16 +22,27 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/baegopa-logo.png",
         "backgroundColor": "#027C49"
-      }
+      },
+      "package": "com.alfinprasetya.baegopa"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
       "favicon": "./assets/images/baegopa-logo.png"
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "9b03db41-a85e-46a8-ba2f-e5eb7d94c039"
+      }
     }
   }
 }
