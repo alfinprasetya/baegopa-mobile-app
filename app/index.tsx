@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Image, SafeAreaView, ScrollView, View } from "react-native";
 
 import AppButton from "@/components/AppButton";
-import { Logo } from "@/constants/image";
+import { images } from "@/constants/image";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -31,7 +31,7 @@ export default function App() {
     <SafeAreaView className="h-full bg-primary">
       <ScrollView contentContainerStyle={{ height: "100%" }}>
         <View className="flex-1 items-center justify-around">
-          <Image className="w-[250px] h-[250px]" source={Logo} />
+          <Image className="w-[250px] h-[250px]" source={images.Logo} />
           <View className="gap-y-3">
             <View>
               <AppButton
