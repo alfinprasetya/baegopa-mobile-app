@@ -2,6 +2,7 @@ import { Text, TouchableOpacity } from "react-native";
 
 type AppButtonProps = {
   title: string;
+  icon?: JSX.Element;
   handlePress: () => void;
   containerStyles: string;
   textStyles?: string;
@@ -10,6 +11,7 @@ type AppButtonProps = {
 
 const AppButton: React.FC<AppButtonProps> = ({
   title,
+  icon,
   handlePress,
   containerStyles,
   textStyles,
@@ -19,10 +21,11 @@ const AppButton: React.FC<AppButtonProps> = ({
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`bg-suface rounded-full min-h-[62px] items-center justify-center ${containerStyles} ${isLoading ? "opacity-50" : ""}`}
+      className={`bg-suface rounded-full min-h-[32px] flex-row items-center justify-center ${containerStyles} ${isLoading ? "opacity-50" : ""}`}
       disabled={isLoading}
     >
-      <Text className={`font-RoboBold text-lg ${textStyles}`}>{title}</Text>
+      {icon}
+      <Text className={`ml-1 font-RoboBold ${textStyles}`}>{title}</Text>
     </TouchableOpacity>
   );
 };

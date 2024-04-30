@@ -37,14 +37,16 @@ export default function App() {
               <AppButton
                 title="Masuk"
                 handlePress={() => router.push("/(auth)/sign-in")}
-                containerStyles="w-[200px]"
+                containerStyles="w-[200px] h-[50px]"
+                textStyles="text-lg"
               />
             </View>
             <View>
               <AppButton
                 title="Daftar"
                 handlePress={() => router.push("/(auth)/sign-up")}
-                containerStyles="w-[200px]"
+                containerStyles="w-[200px] h-[50px]"
+                textStyles="text-lg"
               />
             </View>
             <Link
