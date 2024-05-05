@@ -23,6 +23,7 @@
         "foregroundImage": "./assets/images/baegopa-logo.png",
         "backgroundColor": "#027C49"
       },
+      "permissions": ["INTERNET"],
       "package": "com.alfinprasetya.baegopa"
     },
     "web": {
