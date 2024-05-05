@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Link, router } from "expo-router";
 import { useState } from "react";
 import { View, Image, Text } from "react-native";
@@ -6,16 +7,43 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import AppButton from "@/components/AppButton";
 import AppForm from "@/components/AppForm";
 import { images } from "@/constants/image";
+import { storeToken } from "@/utils/token-storage";
 
 const SignIn = () => {
   const [name, setName] = useState<string>();
+  const [password, setPassword] = useState<string>();
 
   const handleLogin = () => {
     if (!name) {
-      console.log("Username tidak boleh kosong");
+      alert("Username tidak boleh kosong");
       return;
     }
-    router.replace("/(tabs)/home");
+    if (!password) {
+      alert("Password tidak boleh kosong");
+      return;
+    }
+    axios
+      .post("http://fierceface.cloud/auth/login", {
+        username: name,
+        password,
+      })
+      .then((response) => {
+        alert("Berhasil Login dan Mendapatkankan Access Token");
+        storeToken(response.data.access_token);
+        router.replace("/(tabs)/home");
+      })
+      .catch((error) => {
+        const { response } = error;
+        if (response.status === 401) {
+          alert("Username atau password salah");
+          return;
+        }
+        if (response.status === 404) {
+          alert("Akun tidak ditemukan");
+          return;
+        }
+        alert(JSON.stringify(error.response.data, null, 2));
+      });
   };
 
   return (
@@ -40,6 +68,16 @@ const SignIn = () => {
               height={50}
               value={name!}
               onChange={setName}
+              customStyle="mb-4"
+            />
+            <AppForm
+              name="password"
+              icon="lock"
+              width={300}
+              height={50}
+              secureTextEntry
+              value={password!}
+              onChange={setPassword}
               customStyle="mb-4"
             />
           </View>

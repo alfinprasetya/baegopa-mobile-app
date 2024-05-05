@@ -6,6 +6,7 @@ import { Image, SafeAreaView, ScrollView, View } from "react-native";
 
 import AppButton from "@/components/AppButton";
 import { images } from "@/constants/image";
+import { removeToken } from "@/utils/token-storage";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -52,6 +53,7 @@ export default function App() {
             <Link
               className="text-center font-RoboBold text-suface"
               href="/home"
+              onPress={() => removeToken()}
             >
               Mode Tamu
             </Link>

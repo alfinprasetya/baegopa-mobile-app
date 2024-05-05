@@ -1,4 +1,5 @@
-import { Link, router } from "expo-router";
+import axios from "axios";
+import { Link } from "expo-router";
 import { useState } from "react";
 import { View, Text, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -10,17 +11,37 @@ import { images } from "@/constants/image";
 const SignUp = () => {
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleLogin = () => {
     if (!name) {
-      console.log("Username tidak boleh kosong");
+      alert("Username tidak boleh kosong");
       return;
     }
     if (!phone) {
-      console.log("Nomor hp tidak boleh kosong");
+      alert("Nomor hp tidak boleh kosong");
       return;
     }
-    router.replace("/(tabs)/home");
+    if (!password) {
+      alert("Password tidak boleh kosong");
+      return;
+    }
+    axios
+      .post("http://fierceface.cloud/users", {
+        username: name,
+        password,
+        phone,
+      })
+      .then((response) => {
+        alert(
+          "Akun berhasil dibuat : \n" +
+            JSON.stringify(response.data, null, 2) +
+            "\n Silahkan login",
+        );
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error.response.data, null, 2));
+      });
   };
 
   return (
@@ -55,6 +76,16 @@ const SignUp = () => {
               value={phone}
               onChange={setPhone}
               inputMode="numeric"
+              customStyle="mb-4"
+            />
+            <AppForm
+              name="password"
+              icon="lock"
+              width={300}
+              height={50}
+              value={password}
+              onChange={setPassword}
+              secureTextEntry
             />
           </View>
           <Link className="mt-2 mx-4" href="/(auth)/sign-in">

@@ -1,6 +1,10 @@
 import { FontAwesome } from "@expo/vector-icons";
+import axios from "axios";
 import { Tabs } from "expo-router";
+import { useEffect, useState } from "react";
 import { View } from "react-native";
+
+import { getToken } from "@/utils/token-storage";
 
 type TabsIconProps = {
   icon: any;
@@ -25,6 +29,44 @@ const TabsIcon: React.FC<TabsIconProps> = ({ icon, color, focused }) => {
 };
 
 const TabsLayout = () => {
+  const [token, setToken] = useState<string>("");
+
+  async function fetchToken() {
+    const fetchedToken = await getToken();
+    if (!fetchedToken) {
+      alert("Token tidak ditemukan. Menggunakan mode tamu");
+    } else {
+      setToken(() => fetchedToken);
+    }
+  }
+
+  useEffect(() => {
+    fetchToken();
+  }, []);
+
+  useEffect(() => {
+    const cancelToken = axios.CancelToken.source();
+    if (token) {
+      axios
+        .get(`http://fierceface.cloud/auth/profile`, {
+          cancelToken: cancelToken.token,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          alert("berhasil login dengan akun " + response.data.username);
+        })
+        .catch((error) => {
+          alert(JSON.stringify(error));
+        });
+    }
+
+    return () => {
+      cancelToken.cancel();
+    };
+  }, [token]);
+
   return (
     <>
       <Tabs

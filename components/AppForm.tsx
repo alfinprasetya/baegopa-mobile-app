@@ -10,6 +10,7 @@ type AppFormProps = {
   onChange: (text: string) => void;
   customStyle?: string;
   inputMode?: InputModeOptions;
+  secureTextEntry?: boolean;
 };
 
 const AppForm: React.FC<AppFormProps> = ({
@@ -21,6 +22,7 @@ const AppForm: React.FC<AppFormProps> = ({
   onChange,
   customStyle,
   inputMode,
+  secureTextEntry,
 }) => {
   return (
     <View
@@ -34,6 +36,7 @@ const AppForm: React.FC<AppFormProps> = ({
         value={value}
         placeholder={name}
         inputMode={inputMode}
+        secureTextEntry={secureTextEntry}
       />
     </View>
   );
