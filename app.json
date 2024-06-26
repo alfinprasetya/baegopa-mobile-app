@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#027C49"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -21,7 +23,9 @@
         "foregroundImage": "./assets/images/baegopa-logo.png",
         "backgroundColor": "#027C49"
       },
-      "permissions": ["android.permission.INTERNET"],
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
       "package": "com.alfinprasetya.baegopa"
     },
     "web": {
@@ -39,7 +43,9 @@
           },
           "ios": {}
         }
-      ]
+      ],
+      "expo-font",
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true
