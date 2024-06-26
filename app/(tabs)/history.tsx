@@ -1,10 +1,10 @@
 import { Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-const Home = () => {
+const History = () => {
   return (
     <SafeAreaView className="bg-primary h-full">
-      <Text>Home</Text>
+      <Text>History</Text>
     </SafeAreaView>
   );
 };
-export default Home;
+export default History;

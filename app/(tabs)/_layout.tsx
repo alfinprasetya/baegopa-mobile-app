@@ -1,25 +1,24 @@
-import { FontAwesome } from "@expo/vector-icons";
+import { Entypo, FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import axios from "axios";
 import { Tabs } from "expo-router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 
 import { getToken } from "@/utils/token-storage";
 
 type TabsIconProps = {
-  icon: any;
-  color: string;
+  children: JSX.Element;
   focused: boolean;
 };
 
-const TabsIcon: React.FC<TabsIconProps> = ({ icon, color, focused }) => {
+const TabsIcon: React.FC<TabsIconProps> = ({ children, focused }) => {
   return (
     <View className={`items-center justify-center ${focused ? "-mt-8" : ""}`}>
       <View className="w-12 p-2 items-center justify-center">
         <View
           className={`w-12 h-12 bg-suface rounded-full absolute ${focused ? "" : "hidden"}`}
         />
-        <FontAwesome name={icon} size={32} color={color} />
+        {children}
       </View>
       <View
         className={`bg-accent w-8 h-2 rounded-full mt-2 ${focused ? "" : "hidden"}`}
@@ -86,7 +85,9 @@ const TabsLayout = () => {
             title: "Home",
             headerShown: false,
             tabBarIcon: ({ focused, color }) => (
-              <TabsIcon icon="home" color={color} focused={focused} />
+              <TabsIcon focused={focused}>
+                <Entypo name="home" size={24} color={color} />
+              </TabsIcon>
             ),
           }}
         />
@@ -96,7 +97,21 @@ const TabsLayout = () => {
             title: "Cart",
             headerShown: false,
             tabBarIcon: ({ focused, color }) => (
-              <TabsIcon icon="shopping-cart" color={color} focused={focused} />
+              <TabsIcon focused={focused}>
+                <FontAwesome6 name="cart-shopping" size={24} color={color} />
+              </TabsIcon>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="history"
+          options={{
+            title: "History",
+            headerShown: false,
+            tabBarIcon: ({ focused, color }) => (
+              <TabsIcon focused={focused}>
+                <FontAwesome6 name="clipboard-list" size={24} color={color} />
+              </TabsIcon>
             ),
           }}
         />
@@ -106,7 +121,9 @@ const TabsLayout = () => {
             title: "About",
             headerShown: false,
             tabBarIcon: ({ focused, color }) => (
-              <TabsIcon icon="user" color={color} focused={focused} />
+              <TabsIcon focused={focused}>
+                <FontAwesome6 name="user-large" size={24} color={color} />
+              </TabsIcon>
             ),
           }}
         />
